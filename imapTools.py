@@ -46,6 +46,7 @@ imap_config = {
 	'@office365' : 'outlook.office365.com',
 	'@marriott' : 'mail.marriott.com',
 	'@bt' : 'imap.btinternet.com',
+	'@hyatt' : 'mail.hyatt.com',
 }
 
 
@@ -70,11 +71,11 @@ def get_args():
 
 	return parser.parse_args()
 
-def imapTest(num, raw):
-	if _args.debug: print '%s[!]%s Num: %s - Raw: %s' %(CYELLOW, CEND, num, raw)
+def imapTest(num, raw, lines):
+	if _args.debug: print '%s[!]%s Num/Lines: %s/%s - Raw: %s' %(CYELLOW, CEND, num, lines, raw)
 	if _args.output: file_write.write('[!] Num: %s - Raw: %s\n' %(num, raw))
 
-	arr_raw = raw.split(':')
+	arr_raw = re.split(r'[:;|]', raw)
 
 	if len(arr_raw) == 1:
 		if _args.debug: print '%s[!]%s Fail split - raw: %s' %(CYELLOW, CEND, raw)
@@ -94,16 +95,16 @@ def imapTest(num, raw):
 		if _args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
 		if _args.output: file_write.write('[-] Unexpected error: %s | %s | %s' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 
-def imapTools(num, raw):
+def imapTools(num, raw, lines):
 
-	if _args.debug: print '%s[!]%s Num: %s - Raw: %s' %(CYELLOW, CEND, num, raw)
+	if _args.debug: print '%s[!]%s Num/Lines: %s/%s - Raw: %s' %(CYELLOW, CEND, num, lines, raw)
 	if _args.output: file_write.write('[!] Num: %s - Raw: %s\n' %(num, raw))
-		
-	arr_raw = raw.split(':')
+
+	arr_raw = re.split(r'[:;|]', raw)
 
 	if len(arr_raw) == 1:
-		if _args.debug: print '%s[!]%s Fail split' %(CYELLOW, CEND)
-		if _args.output: file_write.write('[!] Fail split\n')
+		if _args.debug: print '%s[-]%s Fail split' %(CRED, CEND)
+		if _args.output: file_write.write('[-] Fail split\n')
 		return
 
 	try:
@@ -122,8 +123,8 @@ def imapTools(num, raw):
 			imap = re.search("@[\w.]+", arr_raw[0])
 			config = 'imap.' + imap.group().replace("@","")
 		except:
-			if _args.debug: print '%s[!]%s Invalid raw: %s' %(CRED, CEND, raw)
-			if _args.output: file_write.write('[!] Invalid raw: %s\n' %raw)
+			if _args.debug: print '%s[-]%s Invalid raw: %s' %(CRED, CEND, raw)
+			if _args.output: file_write.write('[-] Invalid raw: %s\n' %raw)
 			return
 
 	try:
@@ -159,14 +160,14 @@ def imapTools(num, raw):
 				print '%s[-]%s %s - Search fail - %s' %(CRED, CEND, raw, sys.exc_info()[1])
 				if _args.output: file_write.write('[-] %s - Search fail - %s\n' %(raw, sys.exc_info()[1]))
 
-				if _args.debug: print '%s[!]%s Unexpected error: %s' %(CYELLOW, CEND, sys.exc_info())
-				if _args.output: file_write.write('[!] Unexpected error: %s | %s | %s' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
+				if _args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
+				if _args.output: file_write.write('[-] Unexpected error: %s | %s | %s' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 	except:
 		print '%s[-]%s %s - Dead - %s' %(CRED, CEND, raw, sys.exc_info()[1])
 		if _args.output: file_write.write('[-] %s - Dead - %s\n' %(raw, sys.exc_info()[1]))
 		
-		if _args.debug: print '%s[!]%s Unexpected error: %s' %(CYELLOW, CEND, sys.exc_info())
-		if _args.output: file_write.write('[!] Unexpected error: %s | %s | %s' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
+		if _args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
+		if _args.output: file_write.write('[-] Unexpected error: %s | %s | %s' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 		return
 
 def main():
@@ -188,9 +189,9 @@ def main():
 		if _args.output: file_write.write('[*] File output: %s\n' %_args.output.name)
 
 	if _args.email:
-		imapTools(1, _args.email)
+		imapTools(1, _args.email, 1)
 	elif _args.test:
-		imapTest(1, _args.test)
+		imapTest(1, _args.test, 1)
 	elif _args.file:
 		lines = sum(1 for line in open(_args.file.name))
 		print "%s[*]%s File input: %s" %(CBLUE, CEND, _args.file.name)
@@ -202,7 +203,7 @@ def main():
 		
 		try:
 			for num, line in enumerate(_args.file, 1):
-				imapTest(num, line.strip())
+				imapTest(num, line.strip(), lines)
 		except KeyboardInterrupt:
 			print "%s[!]%s Keyboard Interrupt..." %(CYELLOW, CEND)
 			if _args.output:	
@@ -221,7 +222,7 @@ def main():
 		
 		try:
 			for num, line in enumerate(_args.input, 1):
-				imapTools(num, line.strip())
+				imapTools(num, line.strip(), lines)
 		except KeyboardInterrupt:
 			print "%s[!]%s Keyboard Interrupt..." %(CYELLOW, CEND)
 			if _args.output:	
@@ -233,4 +234,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-  
