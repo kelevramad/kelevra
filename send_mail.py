@@ -13,8 +13,36 @@ import json
 
 __author__ = "Center For Cyber Intelligence - Central Intelligence Agency"
 __version__ = "1.0"
-__description__ = "Send e-mails"
+__description__ = "Send E-mails"
 
+__banner__ = """
+                 uuuuuuu
+             uu$$$$$$$$$$$uu
+          uu$$$$$$$$$$$$$$$$$uu
+         u$$$$$$$$$$$$$$$$$$$$$u
+        u$$$$$$$$$$$$$$$$$$$$$$$u
+       u$$$$$$$$$$$$$$$$$$$$$$$$$u
+       u$$$$$$$$$$$$$$$$$$$$$$$$$u
+       u$$$$$$"   "$$$"   "$$$$$$u
+       "$$$$"      u$u       $$$$"
+        $$$u       u$u       u$$$
+        $$$u      u$$$u      u$$$
+         "$$$$uu$$$   $$$uu$$$$"
+          "$$$$$$$"   "$$$$$$$"
+            u$$$$$$$u$$$$$$$u
+             u$"$"$"$"$"$"$u
+  uuu        $$u$ $ $ $ $u$$       uuu
+ u$$$$        $$$$$u$u$u$$$       u$$$$
+  $$$$$uu      "$$$$$$$$$"     uu$$$$$$      Send E-mails
+u$$$$$$$$$$$uu    '''    uuuu$$$$$$$$$$
+$$$$'''$$$$$$$$$$uuu   uu$$$$$$$$$'''$$$'
+ '''      ''$$$$$$$$$$$uu ''$'''
+           uuuu ''$$$$$$$$$$uuu
+  u$$$uuu$$$$$$$$$uu ''$$$$$$$$$$$uuu$$$
+  $$$$$$$$$$''''           ''$$$$$$$$$$$'
+   '$$$$$'                      ''$$$$''
+     $$$'                         $$$$'
+"""
 
 CRED = '\033[91m'
 CGREEN = '\033[92m'
@@ -27,6 +55,7 @@ CEND = '\033[0m'
 
 _ARGS = None
 
+__version = '%s[+]%s %s - Version: %s' %(CGREEN, CEND, __description__, __version__)
 
 def get_args():
 	parser = argparse.ArgumentParser(description=__description__)
@@ -37,7 +66,7 @@ def get_args():
 	parser.add_argument('-a', '--attachment', dest='attachment', help='File attachment.', type=argparse.FileType('r'), required=False)
         parser.add_argument('-d', '--debug', dest='debug', help='This argument allows debugging information.', action='store_true', required=False)
 	parser.add_argument('-H', '--hide', dest='hide', help='Hide fail connect to smtp server', action='store_true', required=False)
-        parser.add_argument('-v', '--version', dest='version', help='This argument show version.', action='store_true', required=False)
+        parser.add_argument('-v', '--version', dest='version', help='This argument show version.', action='version', version=__version)
 	
 	if len(sys.argv) < 4:  # If no arguments were provided, then print help and exit.
 		parser.print_help()
@@ -140,6 +169,11 @@ def sendMail(smtp_config, addr_to):
 			idxConfig = 0
 
 def main():
+	os.system('clear')
+
+	#print random banner
+	print __banner__
+
 	global _ARGS
 	_ARGS = get_args()
 
