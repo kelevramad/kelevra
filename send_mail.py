@@ -18,41 +18,37 @@ __author__ = "Center For Cyber Intelligence - Central Intelligence Agency"
 __version__ = "1.0.1"
 __description__ = "Send E-mails"
 
-__banner__ = """@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ╔════════════════════════════════╗ 
-@@              .*/#((/*.              @@ ║ Our Democracy has been hacked▒ ║
-@@        %@@@@@@@@@@@@@@@@@@@@*       @@ ╠════════════════════════════════╣
-@@    (@@@@@@@@@@@@@@@@@@@@@@@@@@@#    @@ ║ A bug is never just a mistake. ║
-@@  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&  @@ ║ It represents something bigger.║
-@@/@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/@@ ║ An error of thinking that makes║
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ║ you who you are.               ║
-@@ #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.@@ ║                                ║
-@@   @@/       *@@@@@@@@@*       /@@   @@ ║ Hello, friend. Hello, friend?  ║
-@@   & &@@@@@     .@@@.     @@@@@% &   @@ ║ That's lame. Maybe I should    ║
-@@(  @@@@@@@@@@(   @@@   /@@@@@@@@@@  /@@ ║ give you a name. But that's a  ║
-@@&@@@ @@@&    &@@@@@@@@@&    &@@@ @@@&@@ ║ slippery slope. You're only in ║
-@@@@@@ @@        @@(@@#@        @@ @@@@@@ ║ my head. We have to remember   ║
-@@@@@@@(.@@@@@*,@@&%@@.@@.*@@@@&.#@@@@@@@ ║ that.                          ║                               
-@@@@@@@#@@@@@@@@@ &@@@@*/@@@@@@@@#@@@@@@@ ║                                ║ 
-@@@@@  @@@@@@@@@.@@@@@@@&*@@@@@@@@  @@@@@ ║ Sometimes I dream of saving the║
-@@@/   @@@@@@@%   @@@@&   #@@@@@@@   /@@@ ║ world. Saving everyone from the║
-@@@                           ..      @@@ ║ invisible hand, the one that   ║
-@@@.                                 &@@@ ║ brands us with an employee     ║
-@@ *#                               @/ @@ ║ badge, the one the forces us to║ 
-@@   @@@@@@@%.  ,&&%#%&&,   #@@@@@@@   @@ ║ work for them, the one that    ║
-@@   *@@@@@@@@,            @@@@@@@@(   @@ ║ controls us every day without  ║
-@@    @@@@@@@@@@@(.   ,%@@@@@@@@@@@    @@ ║ us knowing it. But I can't stop║ 
-@@    &@@@@@@@@@@@@@@@@@@@@@@@@@@@&    @@ ║ it. I'm not that special. I'm  ║
-@@     @@@@@@@@@@@@@@@@@@@@@@@@@@@     @@ ║ just anonymous. I'm just alone.║
-@@      *@@@@@@@@@@@@@@@@@@@@@@@%      @@ ║                                ║
-@@        #@@@@@@@@@@@@@@@@@@@(        @@ ╠════════════════════════════════╣
-@@          ,@@@@@@@@@@@@@@@,          @@ ║ ******** Fuck Society ******** ║
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ╚════════════════════════════════╝
-"""
+__banner__ = """\033[94m@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m ╔════════════════════════════════╗ 
+\033[94m@@              .*/#((/*.              @@\033[0m ║ Our Democracy has been hacked▒ ║
+\033[94m@@        %@@@@@@@@@@@@@@@@@@@@*       @@\033[0m ╠════════════════════════════════╣
+\033[94m@@    (@@@@@@@@@@@@@@@@@@@@@@@@@@@#    @@\033[0m ║ A bug is never just a mistake. ║
+\033[94m@@  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&  @@\033[0m ║ It represents something bigger.║
+\033[94m@@/@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@/@@\033[0m ║ An error of thinking that makes║
+\033[94m@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m ║ you who you are.               ║
+\033[94m@@ #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.@@\033[0m ║                                ║
+\033[94m@@   @@/       *@@@@@@@@@*       /@@   @@\033[0m ║ Hello, friend. Hello, friend?  ║
+\033[94m@@   & &@@@@@     .@@@.     @@@@@% &   @@\033[0m ║ That's lame. Maybe I should    ║
+\033[94m@@(  @@@@@@@@@@(   @@@   /@@@@@@@@@@  /@@\033[0m ║ give you a name. But that's a  ║
+\033[94m@@&@@@ @@@&    &@@@@@@@@@&    &@@@ @@@&@@\033[0m ║ slippery slope. You're only in ║
+\033[94m@@@@@@ @@        @@(@@#@        @@ @@@@@@\033[0m ║ my head. We have to remember   ║
+\033[94m@@@@@@@(.@@@@@*,@@&%@@.@@.*@@@@&.#@@@@@@@\033[0m ║ that.                          ║                               
+\033[94m@@@@@@@#@@@@@@@@@ &@@@@*/@@@@@@@@#@@@@@@@\033[0m ║                                ║ 
+\033[94m@@@@@  @@@@@@@@@.@@@@@@@&*@@@@@@@@  @@@@@\033[0m ║ Sometimes I dream of saving the║
+\033[94m@@@/   @@@@@@@%   @@@@&   #@@@@@@@   /@@@\033[0m ║ world. Saving everyone from the║
+\033[94m@@@                           ..      @@@\033[0m ║ invisible hand, the one that   ║
+\033[94m@@@.                                 &@@@\033[0m ║ brands us with an employee     ║
+\033[94m@@ *#                               @/ @@\033[0m ║ badge, the one the forces us to║ 
+\033[94m@@   @@@@@@@%.  ,&&%#%&&,   #@@@@@@@   @@\033[0m ║ work for them, the one that    ║
+\033[94m@@   *@@@@@@@@,            @@@@@@@@(   @@\033[0m ║ controls us every day without  ║
+\033[94m@@    @@@@@@@@@@@(.   ,%@@@@@@@@@@@    @@\033[0m ║ us knowing it. But I can't stop║ 
+\033[94m@@    &@@@@@@@@@@@@@@@@@@@@@@@@@@@&    @@\033[0m ║ it. I'm not that special. I'm  ║
+\033[94m@@     @@@@@@@@@@@@@@@@@@@@@@@@@@@     @@\033[0m ║ just anonymous. I'm just alone.║
+\033[94m@@      *@@@@@@@@@@@@@@@@@@@@@@@%      @@\033[0m ║                                ║
+\033[94m@@        #@@@@@@@@@@@@@@@@@@@(        @@\033[0m ╠════════════════════════════════╣
+\033[94m@@          ,@@@@@@@@@@@@@@@,          @@\033[0m ║ ******** Fuck Society ******** ║
+\033[94m@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m ╚════════════════════════════════╝"""
 
-__footer__ = ["""+ -- --=[ Don't cry because it's over, smile because it happened. ]=-- -- +
-""","""+ -- --=[ Be yourself; everyone else is already taken. ]=-- -- +
-""","""+ -- --=[ So many books, so little time. ]=-- -- +
-"""]
+__footer__ = ["""    +--=[ Don't cry because it's over, smile because it happened. ]=--+""","""          +--=[ Be yourself; everyone else is already taken. ]=--+""","""                 +--=[ So many books, so little time. ]=--+"""]
 
 CRED = '\033[91m'
 CGREEN = '\033[92m'
@@ -60,7 +56,7 @@ CYELLOW = '\033[93m'
 CBLUE = '\033[94m'
 CMAGENTA = '\033[95m'
 CGREY = '\033[90m'
-CBLAC = '\033[90m'
+CBLACK = '\033[90m'
 CEND = '\033[0m'
 
 _ARGS = None
@@ -90,8 +86,8 @@ def smtpConfig(filename):
 		with open(filename, 'r') as f:
 			readfile = f.read().splitlines()
 	except:
-		print "%s[-]%s Error: %s" %(CRED, CEND, sys.exc_info())
-		if _ARGS.output: file_write.write('[-] Error: %s\n' %sys.exc_info())
+		print "%s[-]%s Unexpected error: %s | %s | %s" %(CRED, CEND, sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2])
+		if _ARGS.output: file_write.write('[-] Unexpected error: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 		sys.exit(1)
 
 	if not readfile:
@@ -106,8 +102,8 @@ def addrTo(filename):
 		with open(filename, 'r') as f:
 			readfile = f.read().splitlines()
 	except:
-		print "%s[-]%s Error: %s" %(CRED, CEND, sys.exc_info())
-		if _ARGS.output: file_write.write('[-] Error: %s\n' %sys.exc_info())
+		print "%s[-]%s Unexpected error: %s | %s | %s" %(CRED, CEND, sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2])
+		if _ARGS.output: file_write.write('[-] Unexpected error: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 		sys.exit(1)
 
 	if not readfile:
@@ -151,11 +147,13 @@ def sendMail(smtp_config, addr_to):
 			sys.exit(1)
 					
 		if _ARGS.debug:
-			print "%s[!]%s Num/Lines: %s/%s - SMTP Config: %s - From: %s - To: %s" %(CYELLOW, CEND, i+1, len(addr_to), smtp_config[idxConfig], smtp_user, addr_to[i])
-			print "%s[#]%s Vars= idxConfig: %s / smtp_config: %s" %(CYELLOW, CEND, idxConfig, len(smtp_config))
+			print "%s[!]%s Num/Lines: %s/%s" %(CYELLOW, CEND, i+1, len(addr_to))
+			print "%s[!]%s SMTP Config: %s - From: %s - To: %s" %(CYELLOW, CEND, smtp_config[idxConfig], smtp_user, addr_to[i])
+			print "%s[#]%s Vars==> idxConfig: %s | smtp_config: %s" %(CMAGENTA, CEND, idxConfig, len(smtp_config))
 			if _ARGS.output:
-				file_write.write('[!] Num/Lines: %s/%s - SMTP Config: %s - From: %s - To: %s\n' %(i+1, len(addr_to), smtp_config[idxConfig], smtp_user, addr_to[i]))
-				file_write.write('[#] idxConfig: %s | smtp_config: %s\n' %(idxConfig, len(smtp_config)))
+				file_write.write('[!] Num/Lines: %s/%s\n' %(i+1, len(addr_to)))
+				file_write.write('[!] SMTP Config: %s - From: %s - To: %s\n' %(smtp_config[idxConfig], smtp_user, addr_to[i]))
+				file_write.write('[#] Vars==> idxConfig: %s | smtp_config: %s\n' %(idxConfig, len(smtp_config)))
 
 		msg = MIMEMultipart()
 		msg['From'] = smtp_user
@@ -198,24 +196,24 @@ def sendMail(smtp_config, addr_to):
 		except smtplib.SMTPRecipientsRefused:
 			if _ARGS.debug:
 				print "%s[-]%s Send Fail SMTP Recipient Refused - From: %s - To: %s - SMTP=%s / Port=%s / User=%s / Pass=%s" %(CRED, CEND, smtp_user, addr_to[i], smtp_server, smtp_port, smtp_user, smtp_pass)
-				print "%s[-]%s Error SMTP Recipients Refused: %s" %(CRED, CEND, sys.exc_info())
+				print "%s[-]%s Error SMTP Recipients Refused: %s | %s | %s" %(CRED, CEND, sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2])
 			if _ARGS.output:
 				file_write.write('[-] Send Fail SMTP Recipient Refused - From: %s - To: %s - SMTP=%s / Port=%s / User=%s / Pass=%s\n' %(smtp_user, addr_to[i], smtp_server, smtp_port, smtp_user, smtp_pass))
-				file_write.write('[-] Error SMTP Recipients Refused: %s\n' %str(sys.exc_info()))
+				file_write.write('[-] Error SMTP Recipients Refused: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 
 			i += 1
 		except:
 			if _ARGS.output:
 				file_write.write('[-] Delete SMTP Config: %s\n' %smtp_config[idxConfig])
 				file_write.write('[-] Send Fail - From: %s - To: %s - SMTP=%s / Port=%s / User=%s / Pass=%s\n' %(smtp_user, addr_to[i], smtp_server, smtp_port, smtp_user, smtp_pass))
-				file_write.write('[-] Error: %s\n' %str(sys.exc_info()))
+				file_write.write('[-] Unexpected error: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 
 			if len(smtp_config) > 0:			
 				if _ARGS.debug: print "%s[-]%s Delete SMTP Config: %s" %(CRED, CEND, smtp_config[idxConfig])
 				del smtp_config[idxConfig]
 			if _ARGS.debug:
 				print "%s[-]%s Send Fail - From: %s - To: %s - SMTP=%s / Port=%s / User=%s / Pass=%s" %(CRED, CEND, smtp_user, addr_to[i], smtp_server, smtp_port, smtp_user, smtp_pass)
-				print "%s[-]%s Error: %s" %(CRED, CEND, sys.exc_info())
+				print "%s[-]%s Unexpected error: %s | %s | %s" %(CRED, CEND, sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2])
 		
 		if idxConfig == 0 and len(smtp_config) == 0:
 			if _ARGS.debug: print "%s[#]%s EXIT SMTP CONFIG EMPTY!" %(CMAGENTA, CEND)
@@ -227,7 +225,7 @@ def main():
 
 	#print random banner
 	print __banner__
-	print __footer__[random.randint(0,len(__footer__)-1)]
+	print CRED + __footer__[random.randint(0,len(__footer__)-1)] + CEND
 
 	global _ARGS, file_write
 	_ARGS = get_args()
