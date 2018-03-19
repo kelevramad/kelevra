@@ -81,7 +81,7 @@ __version = '%s[+]%s %s - Version: %s' %(CGREEN, CEND, __description__, __versio
 
 def get_args():
 	parser = argparse.ArgumentParser(description=__description__)
-	parser.add_argument('-m', '--mode', dest='mode', help='Option crypt or decrypt [default: crypt]', default='crypt')
+	parser.add_argument('-m', '--mode', dest='mode', help='Option crypt or decrypt [default: crypt]', default='crypt', choices=['crypt','decrypt'])
 	group = parser.add_mutually_exclusive_group(required=True)
 	group.add_argument('-t', '--text', dest='text', help='Plain-text for crypt/decrypt')
 	group.add_argument('-i', '--input', dest='input', help='Input file for crypt/decrypt.', type=argparse.FileType('r'), nargs='*')
@@ -120,7 +120,7 @@ def encryption(message, password):
 	except:
 		print '%s[-]%s Error encryption message' %(CRED, CEND)
 		if args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
-		exit(0)
+		return ''
 
 @animation.wait('bar')
 def decryption(encrypted, password):
@@ -133,7 +133,7 @@ def decryption(encrypted, password):
 	except:
 		print '%s[-]%s Error decryption message' %(CRED, CEND)
 		if args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
-		return
+		return ''
 
 @animation.wait('bar')
 def load_file(file_input):
@@ -174,6 +174,7 @@ def decrypt_file(file_input, file_output, password):
 	file_load = load_file(file_input)
 
 	sys.stdout.write('%s[+]%s Decryption content' %(CGREEN, CEND))
+
 	file_decrypt = decryption(file_load, password)
 
 	if args.compress:
