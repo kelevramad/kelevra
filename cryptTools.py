@@ -156,30 +156,36 @@ def write_file(file_output, content):
 
 def encrypt_file(file_input, file_output, password):
 	sys.stdout.write('%s[+]%s Loading file/size: %s/%s' %(CGREEN, CEND, file_input, humansize(os.path.getsize(file_input))))
+	print "\r"
 	file_load = load_file(file_input)
 	
 	if args.compress:
 		sys.stdout.write('%s[+]%s Compress content file: %s' %(CGREEN, CEND, file_input))
+		print "\r"
 		file_load = compress(file_load)
 	
-	sys.stdout.write('%s[+]%s Encryption content' %(CGREEN, CEND))
+	sys.stdout.write('%s[+]%s Encryption content - OK' %(CGREEN, CEND))
+	print "\r"
 	file_encrypt = encryption(file_load, password)
 	
 	sys.stdout.write('%s[+]%s Write encryption file: %s' %(CGREEN, CEND, file_output))
+	print "\r"
 	write_file(file_output, file_encrypt)
 	return
 
 def decrypt_file(file_input, file_output, password):
 	sys.stdout.write('%s[+]%s Loading file/size: %s/%s' %(CGREEN, CEND, file_input, humansize(os.path.getsize(file_input))))
+	print "\r"
 	file_load = load_file(file_input)
 
-	sys.stdout.write('%s[+]%s Decryption content' %(CGREEN, CEND))
-
+	sys.stdout.write('%s[+]%s Decryption content - OK' %(CGREEN, CEND))
+	print "\r"
 	file_decrypt = decryption(file_load, password)
 
 	if args.compress:
 		try:
 			sys.stdout.write('%s[+]%s Decompress content file: %s' %(CGREEN, CEND, file_input))
+			print "\r"
 			file_decrypt = decompress(file_decrypt)
 		except:
 			print '%s[-]%s Error decompress content file: %s' %(CRED, CEND, file_input)
@@ -187,6 +193,7 @@ def decrypt_file(file_input, file_output, password):
 			exit(0)
 	
 	sys.stdout.write('%s[+]%s Write plain-text file: %s' %(CGREEN, CEND, file_output))
+	print "\r"
 	write_file(file_output, file_decrypt)
 	return
 
@@ -219,7 +226,7 @@ def main():
 			print '%s[+]%s Password: %s' %(CGREEN, CEND, args.password)
 			print '%s[+]%s Password Encrypted: %s' %(CGREEN, CEND, trans(args.password))
 			print '%s[+]%s Message Plain-Text: %s' %(CGREEN, CEND, decode)
-	
+
 	if args.input:
 		for f in args.input:
 			if args.mode == 'crypt':
@@ -237,6 +244,7 @@ def main():
 				print '%s[+]%s Encryption Start' %(CBLUE, CEND)
 				print '%s[+]%s Password: %s' %(CGREEN, CEND, args.password)
 				print '%s[+]%s Password Encrypted: %s' %(CGREEN, CEND, trans(args.password))
+
 				decrypt_file(f.name, file_output, args.password)
 		
 if __name__ == '__main__':
