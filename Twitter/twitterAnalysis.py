@@ -14,7 +14,7 @@ auth.set_access_token(accessToken, accessTokenSecret)
 
 api = tweepy.API(auth)
 
-tweets = api.search('bolsonaro')
+tweets = api.search('#trump')
 
 for tweet in tweets:
 	frase = TextBlob(tweet.text)
