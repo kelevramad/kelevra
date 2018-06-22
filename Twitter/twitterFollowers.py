@@ -14,7 +14,7 @@ accessTokenSecret = "accessTokenSecret"
 HEADER = ['Screenname']
 
 #screenname = 'filmesog'
-screenname = ['AnaClaudiaOC']
+screenname = ['screenname']
 
 auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)
