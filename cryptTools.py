@@ -16,9 +16,8 @@ import itertools
 from Crypto import Random
 from Crypto.Cipher import AES
 
-
 __author__ = "Center For Cyber Intelligence - Central Intelligence Agency"
-__version__ = "1.0"
+__version__ = "1.0.0"
 __description__ = "Crypt Tools"
 
 __banner__ = ["""
@@ -249,3 +248,4 @@ def main():
 		
 if __name__ == '__main__':
 	main()
+
