@@ -2,9 +2,6 @@
 # coding: utf-8
 
 import tweepy
-import time
-import sys
-import csv
 
 consumerKey = "consumerKey"
 consumerSecret = "consumerSecret"

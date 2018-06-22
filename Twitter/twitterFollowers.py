@@ -13,8 +13,8 @@ accessTokenSecret = "accessTokenSecret"
 
 HEADER = ['Screenname']
 
-#screenname = 'screen_name'
-screenname = ['screen_name']
+#screenname = 'filmesog'
+screenname = ['AnaClaudiaOC']
 
 auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
 auth.set_access_token(accessToken, accessTokenSecret)

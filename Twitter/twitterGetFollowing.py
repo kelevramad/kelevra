@@ -3,7 +3,6 @@
 
 import tweepy
 import time
-import sys
 import csv
 
 consumerKey = "consumerKey"
@@ -22,7 +21,7 @@ print "[+] %s" %api.me().friends_count
 
 following = tweepy.Cursor(api.friends, count=200).items()
 
-with open('following.csv', 'w') as csvfile:
+with open('geiselpresente.csv', 'w') as csvfile:
 	csv_writer = csv.writer(csvfile)
 	csv_writer.writerow(HEADER)
 	

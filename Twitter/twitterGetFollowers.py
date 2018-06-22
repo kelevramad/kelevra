@@ -6,17 +6,17 @@ api = twitter.Api(consumer_key='consumer_key',
                   access_token_key='access_token_key',
                   access_token_secret='access_token_secret')
 
-results = api.GetFollowers(user_id=None, screen_name='screen_name', cursor=None, count=None, total_count=None, skip_status=False, include_user_entities=True)
+results = api.GetFollowers(user_id=None, screen_name='OdeCarvalho', cursor=None, count=None, total_count=None, skip_status=False, include_user_entities=True)
 print results
 
-#results = api.GetSearch(term=None, raw_query="q=%23hashtag&count=1&since=2018-03-31&until=2018-04-01", geocode=None, since_id=None, max_id=None, until=None, since=None, count=100, lang=None, locale=None, result_type='mixed', include_entities=None)
+#results = api.GetSearch(term=None, raw_query="q=%23bolsonaro&count=1&since=2018-03-31&until=2018-04-01", geocode=None, since_id=None, max_id=None, until=None, since=None, count=100, lang=None, locale=None, result_type='mixed', include_entities=None)
 
 #for num, ret in enumerate(results, 1):
 #	print "%s " %ret.in_reply_to_screen_name
 #	print "%s " %ret.user.screen_name
 
 
-#user = api.CreateFriendship(user_id=None, screen_name='screen_name', follow=True)
+#user = api.CreateFriendship(user_id=None, screen_name='flaviogordon', follow=True)
 #print user
 
 
@@ -26,7 +26,7 @@ print results
 #results = api.GetRetweetsOfMe()
 #print results
 
-#results = api.GetSearch(term=None, raw_query="q=serie movie&count=100&since=2018-03-30&until=2018-04-01", geocode=None, since_id=None, max_id=None, until=None, since=None, count=100, lang=None, locale=None, result_type='mixed', include_entities=None)
+#results = api.GetSearch(term=None, raw_query="q=serie indica&count=100&since=2018-03-30&until=2018-04-01", geocode=None, since_id=None, max_id=None, until=None, since=None, count=100, lang=None, locale=None, result_type='mixed', include_entities=None)
 
 #for num, ret in enumerate(results, 1):
 #	print "%s - %s" %(num, ret.text)
@@ -51,14 +51,14 @@ print results
 
 #Get Search
 
-#results = api.GetSearch(raw_query="q=movie%20online&result_type=recent&since=2014-01-01&count=200")
+#results = api.GetSearch(raw_query="q=filme%20online%20indica&result_type=recent&since=2014-01-01&count=200")
 #print results
 
 #---------------------------------------------------------------------------------------------------
 
 #Direct Message
 
-#twitter_handle = 'screen_name'
+#twitter_handle = '_mentira_'
 #t = time.strftime("%d-%m-%Y %H:%M:%S", time.gmtime())
 #msg = "Alert !! Motion detected at " + t
 # Send Direct Message to official Twitter handle
@@ -68,14 +68,14 @@ print results
 
 #Get Status Tweet
 
-#tweet = api.GetStatus(id)
+#tweet = api.GetStatus(979944640001519617)
 #print(tweet)
 
 #---------------------------------------------------------------------------------------------------
 
 #Replying Tweet By Id
 
-#status = api.PostUpdate('sample...', None, None, None, id, auto_populate_reply_metadata=True)
+#status = api.PostUpdate('sample...', None, None, None, 979944640001519617, auto_populate_reply_metadata=True)
 
 #---------------------------------------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ print results
 
 #trends_str = ""
 #trends_idx = 0
-#trends = api.GetTrendsWoeid(Woeid)
+#trends = api.GetTrendsWoeid(23424768)
 #print trends
 
 #for t in trends:
@@ -92,7 +92,7 @@ print results
 #		trends_idx += 1
 
 #Post Timeline
-#status = api.PostUpdate('text ' + "\n\r" + trends_str + ' link_url')
+#status = api.PostUpdate('COB enxuga premiacao de melhores do ano ' + "\n\r" + trends_str + ' https://olharolimpico.blogosfera.uol.com.br/2018/03/28/em-novo-momento-financeiro-cob-enxuga-premiacao-de-melhores-do-ano')
 
 #---------------------------------------------------------------------------------------------------
 
