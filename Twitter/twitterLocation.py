@@ -41,4 +41,4 @@ class MyListener(StreamListener):
  
 #Set the hashtag to be searched
 twitter_stream = Stream(auth, MyListener())
-twitter_stream.filter(track=['#bolsonaro2018'])
+twitter_stream.filter(track=['#trump'])
