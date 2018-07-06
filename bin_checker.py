@@ -37,8 +37,8 @@ VERSION = '%s[+]%s %s - Version: %s' %(CGREEN, CEND, __description__, __version_
 def get_args():
 	parser = argparse.ArgumentParser(description=__description__)
 	group = parser.add_mutually_exclusive_group(required=True)
-	group.add_argument('-b', '--bin', dest='bin', help='Bin checker.')
-	group.add_argument('-i', '--input', dest='input', help='Input file with number card number.', type=argparse.FileType('r'))
+	group.add_argument('-b', '--bin', dest='bin', help='Bin checker - The first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.) . Ex: "37834235"')
+	group.add_argument('-i', '--input', dest='input', help='Input file with the first 6 or 8 digits of a payment card number (credit cards, debit cards, etc.).', type=argparse.FileType('r'))
 	parser.add_argument('-o', '--output', dest='output', help='Output file log.', type=argparse.FileType('w'))
 	parser.add_argument('-f', '--filter', dest='filter', help='Filter options: number-length,number-luhn,scheme,type,brand,prepaid,country-numeric,country-alpha2,country-name,country-emoji,country-currency,country-latitude,country-longitude,bank-name,bank-url,bank-phone,bank-city.')
 	parser.add_argument('-d', '--debug', dest='debug', help='This argument allows debugging information.', action='store_true')
