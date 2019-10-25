@@ -61,6 +61,7 @@ DOWNLOAD_FOLDER = "/tmp/email"
 VERSION = '%s[+]%s %s - Version: %s' %(CGREEN, CEND, __description__, __version__)
 
 def get_args():
+
 	parser = argparse.ArgumentParser(description=__description__)
 	group = parser.add_mutually_exclusive_group(required=True)
 	group.add_argument('-e', '--email', dest='email', help='Teste email:password or email|password for test imap')
@@ -81,9 +82,12 @@ def get_args():
 
 	return parser.parse_args()
 
-def imap_test(num, raw, lines):
+def imap_test(num, lines, raw):
 
 	arr_raw = re.split(r'[:;|]', raw)
+
+	#print "raw: %s" %raw
+	#print "arr_raw: %s" %arr_raw
 
 	if len(arr_raw) < 1:
 		if _args.thread:
@@ -91,14 +95,14 @@ def imap_test(num, raw, lines):
 				sys.stdout.write('{0}[-]{1} {2} - {3} - Fail split\n'.format(CRED, CEND, num, raw))
 				sys.stdout.flush()
 		else:
-			if _args.debug: print '{0}[-]{1} {2} - {3} - Fail split'.format(CYELLOW, CEND, num, raw)
-		if _args.output: file_write.write('[!] {0} - {1} - Fail split\n'.format(num, raw))
+			if _args.debug: print '{0}[-]{1} {2} - {3} - Fail split'.format(CRED, CEND, num, raw)
+		if _args.output: file_write.write('[-] {0} - {1} - Fail split\n'.format(num, raw))
 		arr_raw[0] = raw
 
 	arr_raw[0] = arr_raw[0].strip()
 	
 	try:
-		is_valid = validate_email(arr_raw[0],verify=True)
+		is_valid = validate_email(arr_raw[0], verify=True)
 
 		if is_valid:
 			if _args.thread:
@@ -109,21 +113,19 @@ def imap_test(num, raw, lines):
 			if _args.output: file_write.write('[+] {0}/{1} - Email valid: {2}\n'.format(num, lines, raw))
 		else:
 			if _args.thread:
-				sys.stdout.write('{0}[+]{1} {2}/{3} - Email not valid: {4}\n'.format(CRED, CEND, num, lines, raw))
+				sys.stdout.write('{0}[-]{1} {2}/{3} - Email not valid: {4}\n'.format(CRED, CEND, num, lines, raw))
 				sys.stdout.flush()
 			else:
-				print '{0}[+]{1} {2}/{3} - Email not valid: {4}'.format(CRED, CEND, num, lines, raw)
+				print '{0}[-]{1} {2}/{3} - Email not valid: {4}'.format(CRED, CEND, num, lines, raw)
 			if _args.output: file_write.write('[-] {0}/{1} - Email not valid: {2}\n'.format(num, lines, raw))
 	except:
 		if _args.thread:
 			if _args.debug:
-				sys.stdout.write('    => {0}[-]{1} {2}/{3} - Unexpected error: {4}\n'.format(CRED, CEND, num, lines, sys.exc_info()[1]))
+				sys.stdout.write('	=> {0}[-]{1} {2}/{3} - {4} - Unexpected error: {5}\n'.format(CRED, CEND, num, lines, raw, sys.exc_info()[1]))
 				sys.stdout.flush()
 		else:
-			if _args.debug: print '    => {0}[-]{1} {2}/{3} - Unexpected error: {4}'.format(CRED, CEND, num, lines, sys.exc_info()[1])
-
-		if _args.output: file_write.write('    => [-] {0}/{1} -Unexpected error: {2} | {3} | {4}\n'.format(num, lines, sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
-
+			if _args.debug: print '	=> {0}[-]{1} {2}/{3} - {4} - Unexpected error: {5}'.format(CRED, CEND, num, lines, raw, sys.exc_info()[1])
+		if _args.output: file_write.write('	=> [-] {0}/{1} - {2} - Unexpected error: {3} | {4} | {5}\n'.format(num, lines, raw, sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 
 def save_attachment(msg, filename, download_folder="/tmp/email"):
 
@@ -142,33 +144,36 @@ def save_attachment(msg, filename, download_folder="/tmp/email"):
 				filename_full = filename + "_" + str(i) +  file_extension
 
 				if file_extension.lower() == ".pdf" or file_extension.lower() == ".jpg" or file_extension.lower() == ".jpeg":
-					#print '    => %s[*]%s Downloading: %s => %s' %(CBLUE, CEND, part.get_filename(), filename_full)
-					if _args.output: file_write.write('    => [*] Downloading: %s => %s\n' %(part.get_filename(), filename_full))
+					#print '	=> %s[*]%s Downloading: %s => %s' %(CBLUE, CEND, part.get_filename(), filename_full)
+					if _args.output: file_write.write('	=> [*] Downloading: %s => %s\n' %(part.get_filename(), filename_full))
 					open(download_folder + '/' + filename_full, 'wb').write(part.get_payload(decode=True))
 					int_down += 1
 				else:
-					#if _args.debug: print '    => %s[-]%s File not downloading: %s' %(CRED, CEND, part.get_filename())
-					if _args.output: file_write.write('    => [-] File not downloading: %s\n' %(part.get_filename()))
+					#if _args.debug: print '	=> %s[-]%s File not downloading: %s' %(CRED, CEND, part.get_filename())
+					if _args.output: file_write.write('	=> [-] File not downloading: %s\n' %(part.get_filename()))
 					int_n_down += 1
 			else:
-				#if _args.debug: print '    => %s[-]%s Not attachment: %s' %(CRED, CEND, part.get_filename())
-				if _args.output: file_write.write('    => [-] Not attachment: %s\n' %(part.get_filename()))
+				#if _args.debug: print '	=> %s[-]%s Not attachment: %s' %(CRED, CEND, part.get_filename())
+				if _args.output: file_write.write('	=> [-] Not attachment: %s\n' %(part.get_filename()))
 				int_n_att += 1
-		sys.stdout.write('    => %s[*]%s Downloading: %s | Not Downloading: %s | Not attachment: %s\r' %(CBLUE, CEND, str(int_down), str(int_n_down), str(int_n_att)))
+		sys.stdout.write('	=> %s[*]%s Downloading: %s | Not Downloading: %s | Not attachment: %s\r' %(CBLUE, CEND, str(int_down), str(int_n_down), str(int_n_att)))
 		sys.stdout.flush()
 
 	except:
 		#exc_type, exc_obj, exc_tb = sys.exc_info()
 		#fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
 		#print(exc_type, fname, exc_tb.tb_lineno)
-		if _args.debug: print '    => %s[-]%s Error downloading message: %s' %(CRED, CEND, sys.exc_info()[1])
-		if _args.output: file_write.write('    => [-] Error downloading message: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
+		if _args.debug: print '	=> %s[-]%s Error downloading message: %s' %(CRED, CEND, sys.exc_info()[1])
+		if _args.output: file_write.write('	=> [-] Error downloading message: %s | %s | %s\n' %(sys.exc_info()[0],sys.exc_info()[1],sys.exc_info()[2]))
 	
 	return
 
-def imap_tools(num, raw, lines):
+def imap_tools(num, lines, raw):
 
 	arr_raw = re.split(r'[:;|]', raw)
+
+	#print "raw: %s" %raw
+	#print "arr_raw: %s" %arr_raw
 
 	if len(arr_raw) < 2:
 		if _args.thread:
@@ -240,7 +245,7 @@ def imap_tools(num, raw, lines):
 		#proxy_type = "socks4"
 
 		#mailbox = SocksIMAP4SSL(host=config, port=imap_port,
-		#                        proxy_addr=proxy_addr, proxy_port=proxy_port, proxy_type=proxy_type)
+		#						proxy_addr=proxy_addr, proxy_port=proxy_port, proxy_type=proxy_type)
 		#mailbox.login(arr_raw[0], arr_raw[1])
 
 		#typ, data = mailbox.list()
@@ -296,9 +301,9 @@ def imap_tools(num, raw, lines):
 								except:
 									#exc_type, exc_obj, exc_tb = sys.exc_info()
 									#fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-									#print '    => %s[-]%s Except: %s | %s | %s' %(CRED, CEND, exc_type, fname, exc_tb.tb_lineno)
-									if _args.debug: print '    => %s[-]%s Error read: %s' %(CRED, CEND, sys.exc_info()[1])
-									if _args.output: file_write.write('    => [-] Error read: %s | %s | %s\n' %(sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
+									#print '	=> %s[-]%s Except: %s | %s | %s' %(CRED, CEND, exc_type, fname, exc_tb.tb_lineno)
+									if _args.debug: print '	=> %s[-]%s Error read: %s' %(CRED, CEND, sys.exc_info()[1])
+									if _args.output: file_write.write('	=> [-] Error read: %s | %s | %s\n' %(sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 						sys.stdout.write('\n')
 						sys.stdout.flush()
 			except:
@@ -311,11 +316,11 @@ def imap_tools(num, raw, lines):
 
 				if _args.thread:
 					if _args.debug:
-						sys.stdout.write('    => %s[-]%s Unexpected error: %s\n' %(CRED, CEND, sys.exc_info()[1]))
+						sys.stdout.write('	=> %s[-]%s Unexpected error: %s\n' %(CRED, CEND, sys.exc_info()[1]))
 						sys.stdout.flush()
 				else:
-					if _args.debug: print '    => %s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info()[1])
-				if _args.output: file_write.write('    => [-] Unexpected error: %s | %s | %s\n' %(sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
+					if _args.debug: print '	=> %s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info()[1])
+				if _args.output: file_write.write('	=> [-] Unexpected error: %s | %s | %s\n' %(sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 		mail.logout()
 	except:
 		if _args.thread:
@@ -327,11 +332,11 @@ def imap_tools(num, raw, lines):
 		
 		if _args.thread:
 			if _args.debug:
-				sys.stdout.write('    => {0}[-]{1} {2}/{3} - Unexpected error: {4}\n'.format(CRED, CEND, num, lines, sys.exc_info()[1]))
+				sys.stdout.write('	=> {0}[-]{1} {2}/{3} - Unexpected error: {4}\n'.format(CRED, CEND, num, lines, sys.exc_info()[1]))
 				sys.stdout.flush()
 		else:
-			if _args.debug: print '    => {0}[-]{1} {2}/{3} - Unexpected error: {4}'.format(CRED, CEND, num, lines, sys.exc_info()[1])
-		if _args.output: file_write.write('    => [-] {0}/{1} - Unexpected error: {2} | {3} | {4}\n'.format(num, lines, sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
+			if _args.debug: print '	=> {0}[-]{1} {2}/{3} - Unexpected error: {4}'.format(CRED, CEND, num, lines, sys.exc_info()[1])
+		if _args.output: file_write.write('	=> [-] {0}/{1} - Unexpected error: {2} | {3} | {4}\n'.format(num, lines, sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 		mail.logout()
 		return
 
@@ -346,8 +351,7 @@ def main():
 	_args = get_args()
 	email_list = []
 	
-	if _args.debug:
-		print "%s[!]%s Mode Debug On" %(CYELLOW, CEND) 
+	if _args.debug: print "%s[!]%s Mode Debug On" %(CYELLOW, CEND) 
 
 	if _args.output:	
 		file_write = open(_args.output.name, 'w')
@@ -366,16 +370,15 @@ def main():
 			if _args.output: file_write.write('[*] Set temp folder: %s\n' %DOWNLOAD_FOLDER)
 
 	if _args.email:
-		imap_tools(1, _args.email, 1)
+		imap_tools(1, 1, _args.email)
 	elif _args.test:
-		imap_test(1, _args.test, 1)
+		imap_test(1, 1, _args.test)
 	elif _args.file:
 		lines = sum(1 for line in open(_args.file.name))
 		print "%s[*]%s File input: %s" %(CBLUE, CEND, _args.file.name)
 		print "%s[*]%s Lines: %s"  %(CBLUE, CEND, str(lines))
 
-		if _args.thread:
-			print "%s[*]%s Thread: %s"  %(CBLUE, CEND, _args.thread)
+		if _args.thread: print "%s[*]%s Thread: %s"  %(CBLUE, CEND, _args.thread)
 
 		if _args.output: 
 			file_write.write('[*] File input: %s\n' %_args.file.name)
@@ -386,17 +389,16 @@ def main():
 			if _args.thread:
 				pool = ThreadPoolExecutor(max_workers=_args.thread)
 				for num, line in enumerate(_args.file, 1):
-					pool.submit(imap_test, num, line.strip(), lines)
+					pool.submit(imap_test, num, lines, line.strip())
 
 				pool.shutdown(wait=True)
 			else:
 				for num, line in enumerate(_args.file, 1):
-					imap_test(num, line.strip(), lines)
+					imap_test(num, lines, line.strip())
 		except KeyboardInterrupt:
 			print "%s[!]%s Keyboard Interrupt..." %(CYELLOW, CEND)
-			if _args.output:	
-				file_write.close()
-			sys.exit(1)		
+			if _args.output: file_write.close()
+			sys.exit()		
 	else:
 		lines = sum(1 for line in open(_args.input.name))
 		print "%s[*]%s File input: %s" %(CBLUE, CEND, _args.input.name)
@@ -414,7 +416,7 @@ def main():
 			if _args.thread:
 				pool = ThreadPoolExecutor(max_workers=_args.thread)
 				for num, line in enumerate(_args.input, 1):
-					pool.submit(imap_tools, num, line.strip(), lines)
+					pool.submit(imap_tools, num, lines, line.strip())
 
 				pool.shutdown(wait=True)
 			else:
@@ -423,15 +425,13 @@ def main():
 					int_n_down = 0
 					int_n_att = 0
 
-					imap_tools(num, line.strip(), lines)
+					imap_tools(num, lines, line.strip())
 		except KeyboardInterrupt:
 			print "%s[!]%s Keyboard Interrupt..." %(CYELLOW, CEND)
-			if _args.output:	
-				file_write.close()
+			if _args.output: file_write.close()
 			sys.exit()		
 
-	if _args.output:	
-		file_write.close()
+	if _args.output: file_write.close()
 
 if __name__ == '__main__':
 	main()
