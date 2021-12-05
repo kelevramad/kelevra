@@ -46,7 +46,7 @@ def get_args():
 
 	if len(sys.argv) == 1:  # If no arguments were provided, then print help and exit.
 		parser.print_help()
-		sys.exit(1)
+		sys.exit(0)
 
 	return parser.parse_args()
 
@@ -115,20 +115,20 @@ def bin_checker(num, lines, raw):
 				if f == 'bank-phone' and data['bank'].get('phone'): _str += 'bank-phone:%s|' %(data['bank']['phone'])
 				if f == 'bank-city' and data['bank'].get('city'): _str += 'bank-city:%s|' %(data['bank']['city'])
 
-		print "%s[+]%s Num/Lines: %s/%s - Raw: %s - Check: %s" %(CGREEN, CEND, num, lines, raw, _str)
+		print ("%s[+]%s Num/Lines: %s/%s - Raw: %s - Check: %s" %(CGREEN, CEND, num, lines, raw, _str))
 		if _args.output: file_write.write('[+] Num/Lines: %s/%s - Raw: %s - Check: %s\n' %(num, lines, raw, _str.encode('utf8')))
 	except:
-		print '%s[-]%s %s - Dead - %s' %(CRED, CEND, raw, sys.exc_info()[1])
+		print ('%s[-]%s %s - Dead - %s' %(CRED, CEND, raw, sys.exc_info()[1]))
 		if _args.output: file_write.write('[-] %s - Dead - %s | %s | %s\n' %(raw, sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 		
-		if _args.debug: print '    => %s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info()[1])
+		if _args.debug: print ('    => %s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info()[1]))
 		if _args.output: file_write.write('    => [-] Unexpected error: %s | %s | %s' %(sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2]))
 		return
 
 def main():
 	os.system('clear')
 
-	print __banner__
+	print (__banner__)
 	
 	global _args, filters, file_write
 
@@ -136,15 +136,15 @@ def main():
 	filters = []
 	
 	if _args.debug:
-		print "%s[!]%s Mode Debug On" %(CYELLOW, CEND) 
+		print ("%s[!]%s Mode Debug On" %(CYELLOW, CEND)) 
 
 	if _args.output:	
 		file_write = open(_args.output.name, 'w')
-		print "%s[*]%s File output: %s" %(CBLUE, CEND, _args.output.name) 
+		print ("%s[*]%s File output: %s" %(CBLUE, CEND, _args.output.name)) 
 		file_write.write('[*] File output: %s\n' %_args.output.name)
 
 	if _args.filter:
-		print "%s[*]%s Filter: %s" %(CBLUE, CEND, _args.filter) 
+		print ("%s[*]%s Filter: %s" %(CBLUE, CEND, _args.filter)) 
 		if _args.output: file_write.write('[*] Filter: %s\n' %_args.filter)
 		filters = _args.filter.split(',')
 
@@ -152,8 +152,8 @@ def main():
 		bin_checker(1, 1, _args.bin)
 	elif _args.input:
 		lines = sum(1 for line in open(_args.input.name))
-		print "%s[*]%s File input: %s" %(CBLUE, CEND, _args.input.name)
-		print "%s[*]%s Lines: %s"  %(CBLUE, CEND, str(lines))
+		print ("%s[*]%s File input: %s" %(CBLUE, CEND, _args.input.name))
+		print ("%s[*]%s Lines: %s"  %(CBLUE, CEND, str(lines)))
 		if _args.output: file_write.write('[*] File input: %s\n' %_args.input.name)
 		if _args.output: file_write.write('[*] Lines: %s\n' %str(lines))
 
