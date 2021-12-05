@@ -21,41 +21,41 @@ __version__ = "1.0.0"
 __description__ = "Crypt Tools"
 
 __banner__ = ["""
-  /$$$$$$                                  /$$           /$$$$$$$$                  /$$          
- /$$__  $$                                | $$          |__  $$__/                 | $$          
+  /$$$$$$                                  /$$           /$$$$$$$$                  /$$
+ /$$__  $$                                | $$          |__  $$__/                 | $$
 | $$  \__/  /$$$$$$  /$$   /$$  /$$$$$$  /$$$$$$           | $$  /$$$$$$   /$$$$$$ | $$  /$$$$$$$
 | $$       /$$__  $$| $$  | $$ /$$__  $$|_  $$_/           | $$ /$$__  $$ /$$__  $$| $$ /$$_____/
-| $$      | $$  \__/| $$  | $$| $$  \ $$  | $$             | $$| $$  \ $$| $$  \ $$| $$|  $$$$$$ 
+| $$      | $$  \__/| $$  | $$| $$  \ $$  | $$             | $$| $$  \ $$| $$  \ $$| $$|  $$$$$$
 | $$    $$| $$      | $$  | $$| $$  | $$  | $$ /$$         | $$| $$  | $$| $$  | $$| $$ \____  $$
 |  $$$$$$/| $$      |  $$$$$$$| $$$$$$$/  |  $$$$/         | $$|  $$$$$$/|  $$$$$$/| $$ /$$$$$$$/
- \______/ |__/       \____  $$| $$____/    \___/           |__/ \______/  \______/ |__/|_______/ 
-                     /$$  | $$| $$                                                               
-                    |  $$$$$$/| $$                                                               
-                     \______/ |__/                                                               
+ \______/ |__/       \____  $$| $$____/    \___/           |__/ \______/  \______/ |__/|_______/
+                     /$$  | $$| $$
+                    |  $$$$$$/| $$
+                     \______/ |__/
 ""","""
-   ÛÛÛÛÛÛÛÛÛ                                  ÛÛÛÛÛ       ÛÛÛÛÛÛÛÛÛÛÛ                   ÛÛÛÛ         
-  ÛÛÛ°°°°°ÛÛÛ                                °°ÛÛÛ       °Û°°°ÛÛÛ°°°Û                  °°ÛÛÛ         
- ÛÛÛ     °°°  ÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛ ÛÛÛÛÛÛÛÛ  ÛÛÛÛÛÛÛ     °   °ÛÛÛ  °   ÛÛÛÛÛÛ   ÛÛÛÛÛÛ  °ÛÛÛ   ÛÛÛÛÛ 
-°ÛÛÛ         °°ÛÛÛ°°ÛÛÛ°°ÛÛÛ °ÛÛÛ °°ÛÛÛ°°ÛÛÛ°°°ÛÛÛ°          °ÛÛÛ     ÛÛÛ°°ÛÛÛ ÛÛÛ°°ÛÛÛ °ÛÛÛ  ÛÛÛ°°  
-°ÛÛÛ          °ÛÛÛ °°°  °ÛÛÛ °ÛÛÛ  °ÛÛÛ °ÛÛÛ  °ÛÛÛ           °ÛÛÛ    °ÛÛÛ °ÛÛÛ°ÛÛÛ °ÛÛÛ °ÛÛÛ °°ÛÛÛÛÛ 
+   ÛÛÛÛÛÛÛÛÛ                                  ÛÛÛÛÛ       ÛÛÛÛÛÛÛÛÛÛÛ                   ÛÛÛÛ
+  ÛÛÛ°°°°°ÛÛÛ                                °°ÛÛÛ       °Û°°°ÛÛÛ°°°Û                  °°ÛÛÛ
+ ÛÛÛ     °°°  ÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛ ÛÛÛÛÛÛÛÛ  ÛÛÛÛÛÛÛ     °   °ÛÛÛ  °   ÛÛÛÛÛÛ   ÛÛÛÛÛÛ  °ÛÛÛ   ÛÛÛÛÛ
+°ÛÛÛ         °°ÛÛÛ°°ÛÛÛ°°ÛÛÛ °ÛÛÛ °°ÛÛÛ°°ÛÛÛ°°°ÛÛÛ°          °ÛÛÛ     ÛÛÛ°°ÛÛÛ ÛÛÛ°°ÛÛÛ °ÛÛÛ  ÛÛÛ°°
+°ÛÛÛ          °ÛÛÛ °°°  °ÛÛÛ °ÛÛÛ  °ÛÛÛ °ÛÛÛ  °ÛÛÛ           °ÛÛÛ    °ÛÛÛ °ÛÛÛ°ÛÛÛ °ÛÛÛ °ÛÛÛ °°ÛÛÛÛÛ
 °°ÛÛÛ     ÛÛÛ °ÛÛÛ      °ÛÛÛ °ÛÛÛ  °ÛÛÛ °ÛÛÛ  °ÛÛÛ ÛÛÛ       °ÛÛÛ    °ÛÛÛ °ÛÛÛ°ÛÛÛ °ÛÛÛ °ÛÛÛ  °°°°ÛÛÛ
- °°ÛÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ     °°ÛÛÛÛÛÛÛ  °ÛÛÛÛÛÛÛ   °°ÛÛÛÛÛ        ÛÛÛÛÛ   °°ÛÛÛÛÛÛ °°ÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛÛÛ 
-  °°°°°°°°°  °°°°°       °°°°°ÛÛÛ  °ÛÛÛ°°°     °°°°°        °°°°°     °°°°°°   °°°°°°  °°°°° °°°°°°  
-                         ÛÛÛ °ÛÛÛ  °ÛÛÛ                                                              
-                        °°ÛÛÛÛÛÛ   ÛÛÛÛÛ                                                             
-                         °°°°°°   °°°°°                                                              
+ °°ÛÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ     °°ÛÛÛÛÛÛÛ  °ÛÛÛÛÛÛÛ   °°ÛÛÛÛÛ        ÛÛÛÛÛ   °°ÛÛÛÛÛÛ °°ÛÛÛÛÛÛ  ÛÛÛÛÛ ÛÛÛÛÛÛ
+  °°°°°°°°°  °°°°°       °°°°°ÛÛÛ  °ÛÛÛ°°°     °°°°°        °°°°°     °°°°°°   °°°°°°  °°°°° °°°°°°
+                         ÛÛÛ °ÛÛÛ  °ÛÛÛ
+                        °°ÛÛÛÛÛÛ   ÛÛÛÛÛ
+                         °°°°°°   °°°°°
 ""","""
-                                                                                                       
-  ,ad8888ba,                                               888888888888                    88          
- d8"'    `"8b                                     ,d            88                         88          
-d8'                                               88            88                         88          
+
+  ,ad8888ba,                                               888888888888                    88
+ d8"'    `"8b                                     ,d            88                         88
+d8'                                               88            88                         88
 88            8b,dPPYba, 8b       d8 8b,dPPYba, MM88MMM         88  ,adPPYba,   ,adPPYba,  88 ,adPPYba,
 88            88P'   "Y8 `8b     d8' 88P'    "8a  88            88 a8"     "8a a8"     "8a 88 I8[    ""
-Y8,           88          `8b   d8'  88       d8  88            88 8b       d8 8b       d8 88  `"Y8ba, 
+Y8,           88          `8b   d8'  88       d8  88            88 8b       d8 8b       d8 88  `"Y8ba,
  Y8a.    .a8P 88           `8b,d8'   88b,   ,a8"  88,           88 "8a,   ,a8" "8a,   ,a8" 88 aa    ]8I
   `"Y8888Y"'  88             Y88'    88`YbbdP"'   "Y888         88  `"YbbdP"'   `"YbbdP"'  88 `"YbbdP"'
-                             d8'     88                                                                
-                            d8'      88                                                                
+                             d8'     88
+                            d8'      88
 ""","""
  ██████╗██████╗ ██╗   ██╗██████╗ ████████╗    ████████╗ ██████╗  ██████╗ ██╗     ███████╗
 ██╔════╝██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔════╝
@@ -157,16 +157,16 @@ def encrypt_file(file_input, file_output, password):
 	sys.stdout.write('%s[+]%s Loading file/size: %s/%s' %(CGREEN, CEND, file_input, humansize(os.path.getsize(file_input))))
 	print "\r"
 	file_load = load_file(file_input)
-	
+
 	if args.compress:
 		sys.stdout.write('%s[+]%s Compress content file: %s' %(CGREEN, CEND, file_input))
 		print "\r"
 		file_load = compress(file_load)
-	
+
 	sys.stdout.write('%s[+]%s Encryption content - OK' %(CGREEN, CEND))
 	print "\r"
 	file_encrypt = encryption(file_load, password)
-	
+
 	sys.stdout.write('%s[+]%s Write encryption file: %s' %(CGREEN, CEND, file_output))
 	print "\r"
 	write_file(file_output, file_encrypt)
@@ -190,7 +190,7 @@ def decrypt_file(file_input, file_output, password):
 			print '%s[-]%s Error decompress content file: %s' %(CRED, CEND, file_input)
 			if args.debug: print '%s[-]%s Unexpected error: %s' %(CRED, CEND, sys.exc_info())
 			exit(0)
-	
+
 	sys.stdout.write('%s[+]%s Write plain-text file: %s' %(CGREEN, CEND, file_output))
 	print "\r"
 	write_file(file_output, file_decrypt)
@@ -207,10 +207,10 @@ def main():
 	args = get_args()
 
 	if args.debug: print "%s[!]%s Mode Debug On" %(CYELLOW, CEND)
-	
+
 	if args.text:
 		if args.mode == 'crypt':
-			encode = encryption(args.text, args.password)		
+			encode = encryption(args.text, args.password)
 			print '%s[+]%s Encryption Start' %(CBLUE, CEND)
 			print '%s[+]%s Message Plain-Text: %s' %(CGREEN, CEND, args.text)
 			print '%s[+]%s Password: %s' %(CGREEN, CEND, args.password)
@@ -234,7 +234,7 @@ def main():
 				print '%s[+]%s Encryption Start' %(CBLUE, CEND)
 				print '%s[+]%s Password: %s' %(CGREEN, CEND, args.password)
 				print '%s[+]%s Password Encrypted: %s' %(CGREEN, CEND, trans(args.password))
-				encrypt_file(f.name, file_output, args.password)		
+				encrypt_file(f.name, file_output, args.password)
 			elif args.mode == 'decrypt':
 				if len(args.input) > 1 or args.output is None: file_output = os.path.splitext(f.name)[0] + '.dec'
 				else: file_output = args.output.name
@@ -244,7 +244,6 @@ def main():
 				print '%s[+]%s Password Encrypted: %s' %(CGREEN, CEND, trans(args.password))
 
 				decrypt_file(f.name, file_output, args.password)
-		
+
 if __name__ == '__main__':
 	main()
-
