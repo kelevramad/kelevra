@@ -14,8 +14,6 @@ import animation
 import threading
 import itertools
 
-# new add
-
 from Crypto import Random
 from Crypto.Cipher import AES
 
